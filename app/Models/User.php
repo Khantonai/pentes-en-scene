@@ -44,6 +44,10 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
-    
+
+            public function referral()
+        {
+            return $this->hasOne(Referral::class);
+        }
 
 }

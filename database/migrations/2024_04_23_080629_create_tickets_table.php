@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('type');
             $table->date('date_start');
             $table->date('date_end');
+            $table->integer('price');
+            $table->integer('promo');
             $table->integer('phone');
             $table->timestamps();
         });

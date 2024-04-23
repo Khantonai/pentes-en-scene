@@ -17,7 +17,7 @@
 
     
 <!-- Afficher le lien de parrainage -->
-<div id="referralLink">{{ url('/register?referral_link=' . auth()->user()->referral->link) }}</div>
+<div id="link">{{ url('/register?referral_link=' . auth()->user()->referral->link) }}</div>
 
 <!-- Bouton pour copier le lien de parrainage -->
 <button onclick="copyReferralLink()">Copier le lien de parrainage</button>
