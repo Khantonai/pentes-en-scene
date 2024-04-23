@@ -18,8 +18,6 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
-            $table->unsignedBigInteger('referrer_id')->nullable();
-            $table->foreign('referrer_id')->references('id')->on('users')->onDelete('set null');
             $table->timestamps();
         });
 

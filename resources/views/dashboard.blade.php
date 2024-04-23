@@ -14,4 +14,39 @@
             </div>
         </div>
     </div>
+
+    
+<!-- Afficher le lien de parrainage -->
+<div id="referralLink">{{ url('/register?referral_link=' . auth()->user()->referral->link) }}</div>
+
+<!-- Bouton pour copier le lien de parrainage -->
+<button onclick="copyReferralLink()">Copier le lien de parrainage</button>
+
+<!-- Script JavaScript pour copier le lien de parrainage -->
+<script>
+function copyReferralLink() {
+    // Créer un nouvel élément textarea
+    var textarea = document.createElement('textarea');
+
+    // Définir le contenu du textarea sur le lien de parrainage
+    textarea.textContent = document.getElementById('referralLink').textContent;
+
+    // Ajouter le textarea au document
+    document.body.appendChild(textarea);
+
+    // Sélectionner le contenu du textarea
+    textarea.select();
+
+    // Copier le contenu du textarea
+    document.execCommand('copy');
+
+    // Supprimer le textarea du document
+    document.body.removeChild(textarea);
+
+    // Afficher un message indiquant que le lien de parrainage a été copié
+    alert('Lien de parrainage copié !');
+}
+</script>
+<!-- Afficher le lien de parrainage -->
+
 </x-app-layout>

@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TicketsController;
+use App\Http\Controllers\Auth\RegisteredUserController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -17,10 +18,18 @@ Route::get('/billeterie', [TicketsController::class, 'index'])->name('ticket');
 Route::get('billeterie/{experience}/edit', [TicketsController::class,'edit'])->name('tickets.edit');
 Route::put('billeterie/{experience}', [TicketsController::class,'update'])->name('tickets.update');
 Route::delete('billeterie/{experience}', [TicketsController::class,'destroy'])->name('tickets.destroy');
-    
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::post('/dashboard', [RegisteredUserController::class, 'store'])
+    ->middleware('guest')
+    ->name('register');
+
+// Route::get('/register/{referral_link?}', [RegisteredUserController::class, 'store'])
+//     ->middleware('guest')
+//     ->name('register');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
