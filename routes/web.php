@@ -10,6 +10,7 @@ Route::get('/', function () {
 });
 
 
+// Route::get('/dashboard', [TicketsController::class,'index'])->middleware(['auth', 'verified'])->name('dashboard');
 Route::get('/billeterie', [TicketsController::class,'index'])->name('tickets.index');
 Route::get('/billeterie/create', [TicketsController::class,'create'])->name('tickets.create');
 Route::post('/billeterie', [TicketsController::class,'store'])->name('tickets.store');
@@ -18,10 +19,13 @@ Route::get('billeterie/{ticket}/edit', [TicketsController::class,'edit'])->name(
 Route::put('billeterie/{ticket}', [TicketsController::class,'update'])->name('tickets.update');
 Route::get('qr-code/{token}', [TicketsController::class,'scanQrCode'])->name('tickets.scan');
 Route::delete('billeterie/{ticket}', [TicketsController::class,'destroy'])->name('tickets.destroy');
+Route::get('/tickets/{token}/pdf', [TicketsController::class, 'showPDF'])->name('tickets.pdf');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+
+
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::post('/dashboard', [RegisteredUserController::class, 'store'])
     ->middleware('guest')

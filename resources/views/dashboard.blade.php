@@ -14,6 +14,20 @@
             </div>
         </div>
     </div>
+    <h1>Mes tickets</h1>
+    @if($tickets->count() > 0)
+        @foreach ($tickets as $ticket)
+                <div>
+                    <h2>{{ $ticket->first_name }} {{ $ticket->last_name }}</h2>
+                    <p>Token : {{ $ticket->token }}</p>
+                    <a href="{{ route('tickets.pdf', $ticket->token) }}">Voir le PDF</a>
+                </div>
+        @endforeach
+    @else
+        <p>Vous n'avez pas encore de ticket.</p>
+        
+    @endif
+    
 
 <!-- Afficher le lien de parrainage -->
 <div id="link">{{ url('/billeterie/create?referral_link=' . auth()->user()->referral->link) }}</div>

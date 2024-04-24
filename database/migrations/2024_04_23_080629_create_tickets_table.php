@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('type');
             $table->date('date_start');
             $table->date('date_end');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->nullable();
             $table->integer('price');
             $table->integer('promo');
             $table->string('token');

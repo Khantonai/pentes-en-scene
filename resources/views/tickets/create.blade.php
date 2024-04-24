@@ -25,6 +25,7 @@
     <label for="referral_link">Affiliation : </label>
     <input type="text" id="referral_link" name="referral_link">
     <input type="submit" value="Acheter">
+    <p id="price">Prix : 0</p>
 </form>
 
 <ul>
@@ -45,4 +46,54 @@
     if (referralLink) {
         document.getElementById('referral_link').value = referralLink;
     }
+
+
+    document.addEventListener('DOMContentLoaded', function() {
+    // Sélectionner les éléments de formulaire
+    var typeElement = document.getElementById('type');
+    var dateStartElement = document.getElementById('date_start');
+    var dateEndElement = document.getElementById('date_end');
+    var priceElement = document.getElementById('price');
+
+    // Créer une fonction pour gérer les changements
+    function handleChange() {
+        // Obtenir les valeurs des éléments de formulaire
+        var type = typeElement.value;
+        var dateStart = new Date(dateStartElement.value);
+        var dateEnd = new Date(dateEndElement.value);
+
+        // Calculer le nombre de jours
+        var days = (dateEnd - dateStart) / (1000 * 60 * 60 * 24);
+        console.log(days);  
+
+        // Définir le prix en fonction du type de billet et du nombre de jours
+        var price;
+        if (isNaN(days)) {
+            days = 0; // ou une autre valeur par défaut
+        }
+        if (type == 'Premium') {
+            if (days == 0) {
+                price = 0;
+            }else if (days <=3) {
+                price = 20;
+            }
+             else if (days <= 7) {
+                price = 50;
+            }
+            else {
+                price = 100;
+            }
+        } else {
+            price = 0; // Gratuit
+        }
+
+        // Afficher le prix
+        priceElement.textContent = 'Prix : ' + price;
+    }
+
+    // Écouter les événements de changement sur les éléments de formulaire
+    typeElement.addEventListener('change', handleChange);
+    dateStartElement.addEventListener('change', handleChange);
+    dateEndElement.addEventListener('change', handleChange);
+});
 </script>

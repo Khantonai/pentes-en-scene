@@ -6,26 +6,59 @@ use App\Models\Ticket;
 use Illuminate\Http\Request;
 use App\Models\Referral;
 use Endroid\QrCode\QrCode;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Endroid\QrCode\Writer\PngWriter;
+use Barryvdh\DomPDF\Facade\Pdf as PDF;
+
 
 class TicketsController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request)
-    {
-        $tickets = Ticket::all();
+    
 
-        return view('tickets.index', ['tickets' => $tickets]);
-    }
+     public function index()
+     {
+        // dd(Ticket::where('user_id', auth()->id())->get());
+         $tickets = Ticket::where('user_id', auth()->id())->get();
+    
+         if (!$tickets) {
+             // Gérer le cas où l'utilisateur n'a pas de tickets
+             return view('dashboard', ['tickets' => $tickets]);
+         }
+         if (Auth::check()){
+            return view('dashboard', ['tickets' => $tickets]);
+         }else{
+            return view('tickets.index', ['tickets' => $tickets]);}
+     }
+
+    
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request)
     {
-        return view('tickets.create');
+        $ticket = new Ticket();
+        if ($request->type == 'Premium') {
+            $days = $request->date_end->diffInDays($request->date_start);
+
+            if ($days <= 3) {
+                $ticket->price = 20;
+            } elseif ($days <= 7) {
+                $ticket->price = 50;
+            } else {
+                $ticket->price = 100;
+            }
+        } else {
+            $ticket->price = 0; // Gratuit
+        }
+    
+        return view('tickets.create', [
+            'ticket' => $ticket,
+        ]);
     }
 
     /**
@@ -106,15 +139,22 @@ class TicketsController extends Controller
         $ticket->first_name = $request->first_name;
         $ticket->last_name = $request->last_name;
         $ticket->email = $request->email;
+        if(Auth::check()){
+            $ticket->user_id = auth()->id();
+        }
         $ticket->type = $request->type;
         $ticket->date_start = $request->date_start;
-        $ticket->date_end = $request->date_end;    
+        $ticket->date_end = $request->date_end;
         $ticket->price = $ticket->price * (1 - $ticket->promo / 100);
         $ticket->phone = $request->phone;
         $ticket->save();
 
         // return 'Ticket created successfully!';
-        return redirect()->route('tickets.index');
+        if(auth()){
+            return redirect()->route('dashboard');
+        }else{
+            return redirect()->route('tickets.index');
+        }
     }
 
     /**
@@ -125,6 +165,22 @@ class TicketsController extends Controller
         return view('tickets.show', [
             'ticket' => $tickets,
         ]);
+    }
+
+    public function showPDF($token)
+    {
+        // dd($token);
+        $ticket = Ticket::where('token', $token)->first();
+        
+
+        // if (!$ticket) {
+        //     // Gérer le cas où aucun ticket ne correspond au token
+        //     abort(404);
+        // }
+
+        $pdf = PDF::loadView('tickets.pdf', ['ticket' => $ticket]);
+
+        return $pdf->stream('ticket.pdf');
     }
 
     public function scanQrCode($token){
