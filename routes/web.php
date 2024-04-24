@@ -13,11 +13,11 @@ Route::get('/', function () {
 Route::get('/billeterie', [TicketsController::class,'index'])->name('tickets.index');
 Route::get('/billeterie/create', [TicketsController::class,'create'])->name('tickets.create');
 Route::post('/billeterie', [TicketsController::class,'store'])->name('tickets.store');
-Route::get('/billeterie/{experience}', [TicketsController::class,'show'])->name('tickets.show');
-Route::get('/billeterie', [TicketsController::class, 'index'])->name('ticket');
-Route::get('billeterie/{experience}/edit', [TicketsController::class,'edit'])->name('tickets.edit');
-Route::put('billeterie/{experience}', [TicketsController::class,'update'])->name('tickets.update');
-Route::delete('billeterie/{experience}', [TicketsController::class,'destroy'])->name('tickets.destroy');
+Route::get('/billeterie/{ticket}', [TicketsController::class,'show'])->name('tickets.show');
+Route::get('billeterie/{ticket}/edit', [TicketsController::class,'edit'])->name('tickets.edit');
+Route::put('billeterie/{ticket}', [TicketsController::class,'update'])->name('tickets.update');
+Route::get('qr-code/{token}', [TicketsController::class,'scanQrCode'])->name('tickets.scan');
+Route::delete('billeterie/{ticket}', [TicketsController::class,'destroy'])->name('tickets.destroy');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

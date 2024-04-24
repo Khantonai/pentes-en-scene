@@ -21,7 +21,7 @@
     <label for="date_end">Date de fin:</label><br>
     <input type="date" id="date_end" name="date_end"min="2025-01-01" max="2025-12-31"><br>
     <label for="phone">Téléphone:</label><br>
-    <input type="tel" id="phone" name="phone" pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$"><br>
+    <input type="tel" id="phone" name="phone" pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$" value="{{ old('phone', auth()->user()->phone ?? '') }}"><br>
     <label for="referral_link">Affiliation : </label>
     <input type="text" id="referral_link" name="referral_link">
     <input type="submit" value="Acheter">
@@ -34,3 +34,15 @@
         @endforeach
     @endif
 </ul>
+
+
+<script>
+    // Récupérer le paramètre referral_link de l'URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const referralLink = urlParams.get('referral_link');
+
+    // Si referral_link existe, définir comme valeur du champ
+    if (referralLink) {
+        document.getElementById('referral_link').value = referralLink;
+    }
+</script>
