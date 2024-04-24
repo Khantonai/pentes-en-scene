@@ -21,7 +21,9 @@ return new class extends Migration
             $table->date('date_end');
             $table->integer('price');
             $table->integer('promo');
-            $table->integer('phone');
+            $table->string('token');
+            $table->string('phone');
+            $table->string('qr_code');
             $table->timestamps();
         });
     }

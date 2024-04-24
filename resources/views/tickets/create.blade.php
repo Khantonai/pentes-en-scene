@@ -21,8 +21,16 @@
     <label for="date_end">Date de fin:</label><br>
     <input type="date" id="date_end" name="date_end"min="2025-01-01" max="2025-12-31"><br>
     <label for="phone">Téléphone:</label><br>
-    <input type="tel" id="phone" name="phone"><br>
+    <input type="tel" id="phone" name="phone" pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$"><br>
     <label for="referral_link">Affiliation : </label>
     <input type="text" id="referral_link" name="referral_link">
     <input type="submit" value="Acheter">
 </form>
+
+<ul>
+    @if ($errors->any())
+        @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+        @endforeach
+    @endif
+</ul>
