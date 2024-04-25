@@ -32,7 +32,6 @@
         <a href="{{ route('login.redirect', ['from' => route('tickets.create')]) }}">Se connecter</a>
     @endguest
 </form>
-
 <ul>
     @if ($errors->any())
         @foreach ($errors->all() as $error)
@@ -40,7 +39,6 @@
         @endforeach
     @endif
 </ul>
-
 
 <script>
     // Récupérer le paramètre referral_link de l'URL
