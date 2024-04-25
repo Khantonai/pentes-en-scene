@@ -28,9 +28,9 @@
     @endauth
     <p id="price">Prix : 0 €</p>
     <input type="submit" value="Acheter">
-    @auth
-        <a href="{{ route('register.redirect', ['from' => route('tickets.create')]) }}">S'inscrire</a>
-    @endauth
+    @guest
+        <a href="{{ route('login.redirect', ['from' => route('tickets.create')]) }}">Se connecter</a>
+    @endguest
 </form>
 
 <ul>
