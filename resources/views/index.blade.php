@@ -250,7 +250,7 @@
 @section('landing')
     <div>
         <h1>
-            Pentes en Scène
+            Pente en Scène
         </h1>
         <p>
             Le festival culturel de l'été à Croix-Rousse
@@ -300,7 +300,7 @@ local_activity
 </section>
 
 <section class="title-section">
-    <h2>À propos de Pentes en Scène</h2>
+    <h2>À propos de Pente en Scène</h2>
 </section>
 
 <section id="presentation">
@@ -308,7 +308,7 @@ local_activity
         <div>
             <h3>Le festival culturel de l'été à Croix-Rousse</h3>
             <p>
-                Pentes en Scène est un festival culturel qui se déroule chaque été à Croix-Rousse. Il propose une programmation riche et variée, alliant concerts, spectacles de rue, animations pour enfants, expositions, ateliers, conférences et bien d'autres activités. Le festival est ouvert à tous et se veut un lieu de rencontre et d'échange entre les habitants du quartier et les visiteurs de passage. Venez découvrir la richesse et la diversité de la culture lyonnaise dans une ambiance conviviale et festive !
+                Pente en Scène est un festival culturel qui se déroule chaque été à Croix-Rousse. Il propose une programmation riche et variée, alliant concerts, spectacles de rue, animations pour enfants, expositions, ateliers, conférences et bien d'autres activités. Le festival est ouvert à tous et se veut un lieu de rencontre et d'échange entre les habitants du quartier et les visiteurs de passage. Venez découvrir la richesse et la diversité de la culture lyonnaise dans une ambiance conviviale et festive !
             </p>
         </div>
         <img src="storage/img/image2.jpg" alt="">
@@ -317,7 +317,7 @@ local_activity
         <div>
             <h3>Un événement incontournable de l'été à Lyon</h3>
             <p>
-                Depuis sa création en 2005, Pentes en Scène est devenu un événement incontournable de l'été à Lyon. Chaque année, des milliers de spectateurs se pressent dans les rues de Croix-Rousse pour assister aux concerts, aux spectacles de rue, aux animations et aux expositions proposés par le festival. Les artistes locaux et internationaux se succèdent sur les différentes scènes du festival pour offrir au public des moments inoubliables et des découvertes musicales et artistiques uniques. Venez vivre l'expérience Pentes en Scène et laissez-vous emporter par la magie du festival !
+                Depuis sa création en 2005, Pente en Scène est devenu un événement incontournable de l'été à Lyon. Chaque année, des milliers de spectateurs se pressent dans les rues de Croix-Rousse pour assister aux concerts, aux spectacles de rue, aux animations et aux expositions proposés par le festival. Les artistes locaux et internationaux se succèdent sur les différentes scènes du festival pour offrir au public des moments inoubliables et des découvertes musicales et artistiques uniques. Venez vivre l'expérience Pente en Scène et laissez-vous emporter par la magie du festival !
             </p>
         </div>
         <img src="https://www.tourmag.com/photo/art/grande/66000069-46986944.jpg?v=1657621760" alt="">
@@ -326,7 +326,7 @@ local_activity
         <div>
             <h3>Un festival engagé pour la culture et l'environnement</h3>
             <p>
-                Pentes en Scène est un festival engagé pour la culture et l'environnement. Depuis sa création, il s'efforce de promouvoir la diversité culturelle et artistique, de soutenir les artistes émergents et de sensibiliser le public aux enjeux environnementaux. Le festival propose des animations et des activités éco-responsables, comme des ateliers de sensibilisation à l'environnement, des expositions sur le thème de l'écologie, des conférences sur le
+                Pente en Scène est un festival engagé pour la culture et l'environnement. Depuis sa création, il s'efforce de promouvoir la diversité culturelle et artistique, de soutenir les artistes émergents et de sensibiliser le public aux enjeux environnementaux. Le festival propose des animations et des activités éco-responsables, comme des ateliers de sensibilisation à l'environnement, des expositions sur le thème de l'écologie, des conférences sur le
                 développement durable et des spectacles de rue engagés. Venez participer à un événement festif et engagé, qui allie culture, art et environnement dans une ambiance conviviale et festive !
             </p>
         </div>
@@ -337,7 +337,7 @@ local_activity
 
 <section id="reassurance">
     <div id="reassurance-title" class="title-section">
-        <h2>Pourquoi Pentes en Scène</h2>
+        <h2>Pourquoi Pente en Scène</h2>
     </div>
             <div class="timeline-trigger"></div>
             <div class="scroll-move">

@@ -14,7 +14,7 @@ Route::get('/', function () {
 Route::get('/dashboard', [TicketsController::class,'index'])->middleware(['auth', 'verified'])->name('dashboard');
 Route::get('/register/redirect', [RegisteredUserController::class, 'redirect'])->name('register.redirect');
 Route::get('/billeterie', [TicketsController::class,'index'])->name('tickets.index');
-Route::get('/billeterie/create', [TicketsController::class,'create'])->name('tickets.create');
+Route::get('/billeterie/acheter', [TicketsController::class,'create'])->name('tickets.create');
 Route::post('/billeterie', [TicketsController::class,'store'])->name('tickets.store');
 Route::get('/billeterie/{ticket}', [TicketsController::class,'show'])->name('tickets.show');
 Route::get('billeterie/{ticket}/edit', [TicketsController::class,'edit'])->name('tickets.edit');

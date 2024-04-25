@@ -6,6 +6,8 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <title>{{ config('app.name', 'Laravel') }}</title>
+        <!-- favicon png -->
+        <link rel="icon" type="image/png" href="../storage/img/logo-noir.png">
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://use.typekit.net/oap7kyb.css">
@@ -15,7 +17,9 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
         <!-- Scripts -->
-        <link rel="stylesheet" href="storage/css/app.css">
+        <link rel="stylesheet" href="../storage/css/app.css">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        
 
         <!-- Styles -->
         @yield('styles')

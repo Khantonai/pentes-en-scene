@@ -1,4 +1,6 @@
+@extends('layouts.user')
 
+@section('content')
 @if ($errors->has('referral_link'))
     <span class="error">{{ $errors->first('referral_link') }}</span>
 @endif
@@ -111,3 +113,5 @@
     dateEndElement.addEventListener('change', handleChange);
 });
 </script>
+
+@endsection
