@@ -18,3 +18,12 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+
+Route::get('/animations', function () {
+    return view('/animations/index');
+})->name('animations.index');
+
+Route::get('/programme', function () {
+    return view('/programme/index');
+})->name('programme.index');
