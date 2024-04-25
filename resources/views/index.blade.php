@@ -255,7 +255,7 @@
         <p>
             Le festival culturel de l'été à Croix-Rousse
         </p>
-        <img src="storage/img/logo.png" alt="" height="">
+        <img src="storage/img/logo-blanc.png" alt="" height="200">
     </div>
 @endsection
 
