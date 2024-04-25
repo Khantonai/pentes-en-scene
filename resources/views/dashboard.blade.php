@@ -25,12 +25,11 @@
         @endforeach
     @else
         <p>Vous n'avez pas encore de ticket.</p>
-        
     @endif
-    
-
-<!-- Afficher le lien de parrainage -->
-<div id="link">{{ url('/billeterie/create?referral_link=' . auth()->user()->referral->link) }}</div>
+<h1>Mon lien de parrainage</h1>
+@if($tickets->count() > 0)
+    <div id="link">{{ url('/billeterie/create?referral_link=' . auth()->user()->referral->link) }}</div>
+@endif
 
 <!-- Bouton pour copier le lien de parrainage -->
 <button onclick="copyReferralLink()">Copier le lien de parrainage</button>
