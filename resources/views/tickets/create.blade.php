@@ -22,10 +22,12 @@
     <input type="date" id="date_end" name="date_end"min="2025-01-01" max="2025-12-31"><br>
     <label for="phone">Téléphone:</label><br>
     <input type="tel" id="phone" name="phone" pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$" value="{{ old('phone', auth()->user()->phone ?? '') }}"><br>
-    <label for="referral_link">Affiliation : </label>
-    <input type="text" id="referral_link" name="referral_link">
-    <input type="submit" value="Acheter">
+    @auth
+        <label for="referral_link">Affiliation : </label>
+        <input type="text" id="referral_link" name="referral_link">
+    @endauth
     <p id="price">Prix : 0</p>
+    <input type="submit" value="Acheter">
 </form>
 
 <ul>
@@ -47,7 +49,6 @@
         document.getElementById('referral_link').value = referralLink;
     }
 
-
     document.addEventListener('DOMContentLoaded', function() {
     // Sélectionner les éléments de formulaire
     var typeElement = document.getElementById('type');
@@ -61,10 +62,14 @@
         var type = typeElement.value;
         var dateStart = new Date(dateStartElement.value);
         var dateEnd = new Date(dateEndElement.value);
-
+        var referralLinkElement = document.getElementById('referral_link');
+        var referralLink = referralLinkElement ? referralLinkElement.value : null;
         // Calculer le nombre de jours
         var days = (dateEnd - dateStart) / (1000 * 60 * 60 * 24);
-        console.log(days);  
+        var promo = null;  
+        if (referralLink=!null) {
+            promo = 0.85;
+        }
 
         // Définir le prix en fonction du type de billet et du nombre de jours
         var price;
@@ -75,13 +80,14 @@
             if (days == 0) {
                 price = 0;
             }else if (days <=3) {
-                price = 20;
+                price = 50 * promo ;
             }
-             else if (days <= 7) {
-                price = 50;
+            else if (days <= 7) {
+                price = 70 - 70 * (1 - promo);
+                console.log(price);
             }
             else {
-                price = 100;
+                price = 80 * promo;
             }
         } else {
             price = 0; // Gratuit

@@ -41,24 +41,9 @@ class TicketsController extends Controller
      */
     public function create(Request $request)
     {
-        $ticket = new Ticket();
-        if ($request->type == 'Premium') {
-            $days = $request->date_end->diffInDays($request->date_start);
 
-            if ($days <= 3) {
-                $ticket->price = 20;
-            } elseif ($days <= 7) {
-                $ticket->price = 50;
-            } else {
-                $ticket->price = 100;
-            }
-        } else {
-            $ticket->price = 0; // Gratuit
-        }
     
-        return view('tickets.create', [
-            'ticket' => $ticket,
-        ]);
+        return view('tickets.create');
     }
 
     /**
@@ -115,7 +100,22 @@ class TicketsController extends Controller
         // // Ou vous pouvez l'envoyer directement dans la réponse HTTP
         // echo $qrCodeString;
 
-    
+        if ($request->type == 'Premium') {
+            $startDate = \Carbon\Carbon::parse($request->date_start);
+            $endDate = \Carbon\Carbon::parse($request->date_end);
+
+            $days = $startDate->diffInDays($endDate);
+
+            if ($days <= 3) {
+                $ticket->price = 20;
+            } elseif ($days <= 7) {
+                $ticket->price = 50;
+            } else {
+                $ticket->price = 100;
+            }
+        } else {
+            $ticket->price = 0; // Gratuit
+        }
         if ($request->filled('referral_link')) {
             // dd("lala");
             $referral = Referral::where('link', $request->referral_link)->first();
@@ -141,6 +141,8 @@ class TicketsController extends Controller
         $ticket->email = $request->email;
         if(Auth::check()){
             $ticket->user_id = auth()->id();
+        }else{
+            $ticket->user_id = null;
         }
         $ticket->type = $request->type;
         $ticket->date_start = $request->date_start;
@@ -150,20 +152,21 @@ class TicketsController extends Controller
         $ticket->save();
 
         // return 'Ticket created successfully!';
-        if(auth()){
-            return redirect()->route('dashboard');
-        }else{
-            return redirect()->route('tickets.index');
-        }
+        // if(Auth::check()){
+        //     return redirect()->route('dashboard');
+        // }else{
+        //     return redirect()->route('tickets.index');
+        // }
+        return redirect()->route('tickets.show', ['ticket' => $ticket->id]);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Ticket $tickets)
+    public function show(Ticket $ticket)
     {
         return view('tickets.show', [
-            'ticket' => $tickets,
+            'ticket' => $ticket,
         ]);
     }
 
@@ -173,10 +176,10 @@ class TicketsController extends Controller
         $ticket = Ticket::where('token', $token)->first();
         
 
-        // if (!$ticket) {
-        //     // Gérer le cas où aucun ticket ne correspond au token
-        //     abort(404);
-        // }
+        if (!$ticket) {
+            // Gérer le cas où aucun ticket ne correspond au token
+            abort(404);
+        }
 
         $pdf = PDF::loadView('tickets.pdf', ['ticket' => $ticket]);
 

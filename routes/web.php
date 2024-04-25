@@ -7,10 +7,10 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
 
 
-// Route::get('/dashboard', [TicketsController::class,'index'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [TicketsController::class,'index'])->middleware(['auth', 'verified'])->name('dashboard');
 Route::get('/billeterie', [TicketsController::class,'index'])->name('tickets.index');
 Route::get('/billeterie/create', [TicketsController::class,'create'])->name('tickets.create');
 Route::post('/billeterie', [TicketsController::class,'store'])->name('tickets.store');

@@ -42,7 +42,7 @@ function copyReferralLink() {
     var textarea = document.createElement('textarea');
 
     // Définir le contenu du textarea sur le lien de parrainage
-    textarea.textContent = document.getElementById('referralLink').textContent;
+    textarea.textContent = document.getElementById('link').textContent;
 
     // Ajouter le textarea au document
     document.body.appendChild(textarea);
