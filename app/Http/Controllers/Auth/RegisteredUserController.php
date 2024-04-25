@@ -49,6 +49,12 @@ class RegisteredUserController extends Controller
 
     //     return redirect(route('dashboard', absolute: false));
     // }
+    public function redirect(Request $request)
+    {
+        $request->session()->put('redirect_url', $request->input('from'));
+
+        return redirect()->route('register');
+    }
 
     public function store(Request $request)
 {
@@ -82,10 +88,11 @@ class RegisteredUserController extends Controller
     }
 
     event(new Registered($user));
-
+    
     Auth::login($user);
+    $redirectUrl = $request->session()->get('redirect_url', route('dashboard', absolute: false));
 
-    return redirect(route('dashboard', absolute: false));
+    return redirect($redirectUrl);
 }
     
 }

@@ -5,12 +5,14 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TicketsController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 
+
 Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 
 
 Route::get('/dashboard', [TicketsController::class,'index'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/register/redirect', [RegisteredUserController::class, 'redirect'])->name('register.redirect');
 Route::get('/billeterie', [TicketsController::class,'index'])->name('tickets.index');
 Route::get('/billeterie/create', [TicketsController::class,'create'])->name('tickets.create');
 Route::post('/billeterie', [TicketsController::class,'store'])->name('tickets.store');

@@ -26,8 +26,11 @@
         <label for="referral_link">Affiliation : </label>
         <input type="text" id="referral_link" name="referral_link">
     @endauth
-    <p id="price">Prix : 0</p>
+    <p id="price">Prix : 0 €</p>
     <input type="submit" value="Acheter">
+    @auth
+        <a href="{{ route('register.redirect', ['from' => route('tickets.create')]) }}">S'inscrire</a>
+    @endauth
 </form>
 
 <ul>
@@ -45,8 +48,9 @@
     const referralLink = urlParams.get('referral_link');
 
     // Si referral_link existe, définir comme valeur du champ
-    if (referralLink) {
+    try {
         document.getElementById('referral_link').value = referralLink;
+    } catch (error) {  
     }
 
     document.addEventListener('DOMContentLoaded', function() {
@@ -62,13 +66,14 @@
         var type = typeElement.value;
         var dateStart = new Date(dateStartElement.value);
         var dateEnd = new Date(dateEndElement.value);
-        var referralLinkElement = document.getElementById('referral_link');
-        var referralLink = referralLinkElement ? referralLinkElement.value : null;
+
         // Calculer le nombre de jours
         var days = (dateEnd - dateStart) / (1000 * 60 * 60 * 24);
         var promo = null;  
-        if (referralLink=!null) {
-            promo = 0.85;
+        if (referralLink!=null) {
+            console.log("AAHAAh" + referralLink);
+            promo = 0.15;
+            console.log(promo);
         }
 
         // Définir le prix en fonction du type de billet et du nombre de jours
@@ -79,22 +84,25 @@
         if (type == 'Premium') {
             if (days == 0) {
                 price = 0;
+                console.log(price);
             }else if (days <=3) {
-                price = 50 * promo ;
+                price = 50-(50*promo);
+                console.log(promo);
             }
             else if (days <= 7) {
-                price = 70 - 70 * (1 - promo);
+                price = 70-(70 * promo);
                 console.log(price);
             }
             else {
-                price = 80 * promo;
+                price = 80-(80*promo);
             }
-        } else {
+        }
+        else {
             price = 0; // Gratuit
         }
 
         // Afficher le prix
-        priceElement.textContent = 'Prix : ' + price;
+        priceElement.textContent = 'Prix : ' + price + ' €';
     }
 
     // Écouter les événements de changement sur les éléments de formulaire
