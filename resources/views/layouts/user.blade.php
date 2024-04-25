@@ -6,8 +6,6 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <title>{{ config('app.name', 'Laravel') }}</title>
-        <!-- favicon png -->
-        <link rel="icon" type="image/png" href="storage/img/logo-noir.png">
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://use.typekit.net/oap7kyb.css">
@@ -18,8 +16,6 @@
 
         <!-- Scripts -->
         <link rel="stylesheet" href="storage/css/app.css">
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        
 
         <!-- Styles -->
         @yield('styles')
@@ -30,9 +26,6 @@
         
         <!-- Page Content -->
         <main class="flex-col">
-            <section id="landing" style="background: linear-gradient(90deg, rgb(0,0,0,0.5) 60%, rgb(0,0,0,0.0)) 100%, url('@yield('landing-background')') no-repeat center center / cover fixed;">
-                @yield('landing')
-            </section>
             
                 @include('layouts.header')
                 @yield('content')

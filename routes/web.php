@@ -7,8 +7,8 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 
 
 Route::get('/', function () {
-    return view('welcome');
-})->name('welcome');
+    return view('/index');
+})->name('index');
 
 
 Route::get('/dashboard', [TicketsController::class,'index'])->middleware(['auth', 'verified'])->name('dashboard');
@@ -44,3 +44,12 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+
+Route::get('/animations', function () {
+    return view('/animations/index');
+})->name('animations.index');
+
+Route::get('/programme', function () {
+    return view('/programme/index');
+})->name('programme.index');
