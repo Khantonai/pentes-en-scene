@@ -3,33 +3,44 @@
     <span class="error">{{ $errors->first('referral_link') }}</span>
 @endif
 
-<form action="{{ route('tickets.store') }}" method="POST">
+<form action="{{ route('tickets.store') }}" method="POST" id="ticketForm">
     @csrf
-    <label for="first_name">Prénom:</label><br>
-    <input type="text" id="first_name" name="first_name" value="{{ old('first_name', auth()->user()->first_name ?? '') }}"><br>
-    <label for="last_name">Nom:</label><br>
-    <input type="text" id="last_name" name="last_name" value="{{ old('last_name', auth()->user()->last_name ?? '') }}"><br>
-    <label for="email">Email:</label><br>
-    <input type="email" id="email" name="email" value="{{ old('email', auth()->user()->email ?? '') }}"><br>
-    <label for="type">type</label>
-        <select id="type" name="type">
-            <option value="Gratuit"> Gratuit</option>
-            <option value="Premium"> Premium</option>
-        </select>
-    <label for="date_start">Date de début:</label><br>
-    <input type="date" id="date_start" name="date_start" min="2025-01-01" max="2025-12-31"><br>
-    <label for="date_end">Date de fin:</label><br>
-    <input type="date" id="date_end" name="date_end"min="2025-01-01" max="2025-12-31"><br>
-    <label for="phone">Téléphone:</label><br>
-    <input type="tel" id="phone" name="phone" pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$" value="{{ old('phone', auth()->user()->phone ?? '') }}"><br>
-    @auth
-        <label for="referral_link">Affiliation : </label>
-        <input type="text" id="referral_link" name="referral_link">
-    @endauth
-    <p id="price">Prix : 0 €</p>
-    <input type="submit" value="Acheter">
+    <label for="num_tickets">Nombre de tickets:</label><br>
+    <input type="number" id="num_tickets" name="num_tickets" min="1" max="10" value="1"><br>
+    <div id="ticketContainer">
+        <!-- Un ticket -->
+        <div class="ticket">
+            <label for="first_name []">Prénom:</label><br>
+            <input type="text" id="first_name" name="first_name[]" value="{{ old('first_name', auth()->user()->first_name ?? '') }}"><br>
+            <label for="last_name []">Nom:</label><br>
+            <input type="text" id="last_name" name="last_name[]" value="{{ old('last_name', auth()->user()->last_name ?? '') }}"><br>
+            <label for="email[]">Email:</label><br>
+            <input type="email" id="email" name="email[]" value="{{ old('email', auth()->user()->email ?? '') }}"><br>
+            <label for="type[]">type</label>
+                <select id="type" name="type">
+                    <option value="Gratuit"> Gratuit</option>
+                    <option value="Premium"> Premium</option>
+                </select>
+            <label for="date_start[]">Date de début:</label><br>
+            <input type="date" id="date_start" name="date_start[]" min="2025-01-01" max="2025-12-31"><br>
+            <label for="date_end[]">Date de fin:</label><br>
+            <input type="date" id="date_end" name="date_end[]"min="2025-01-01" max="2025-12-31"><br>
+            <label for="phone[]">Téléphone:</label><br>
+            <input type="tel" id="phone" name="phone[]" pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$" value="{{ old('phone', auth()->user()->phone ?? '') }}"><br>
+            @auth
+                <label for="referral_link[]">Affiliation : </label>
+                <input type="text" id="referral_link" name="referral_link[]">
+            @endauth
+            <p id="price[]">Prix : 0 €</p>
+        </div>
+    </div>
+    <div id = "acheter">
+        <input type="submit" value="Acheter">
+    </div>
+    
+    
     @guest
-        <a href="{{ route('login.redirect', ['from' => route('tickets.create')]) }}">Se connecter</a>
+        
     @endguest
 </form>
 <ul>
@@ -39,6 +50,59 @@
         @endforeach
     @endif
 </ul>
+
+<script>
+    document.getElementById('num_tickets').addEventListener('change', function() {
+        // Obtenir le nombre de tickets
+        var numTickets = this.value;
+
+        // Obtenir le conteneur de tickets
+        var ticketContainer = document.getElementById('ticketContainer');
+
+        // Supprimer tous les tickets existants
+        while (ticketContainer.firstChild) {
+            ticketContainer.removeChild(ticketContainer.firstChild);
+        }
+
+        // Ajouter le nombre de tickets spécifié
+        for (var i = 0; i < numTickets; i++) {
+            // Créer un nouveau ticket
+            var newTicket = document.createElement('div');
+            var buy = document.getElementById('acheter');
+            newTicket.className = 'ticket';
+
+            // Ajouter les champs de formulaire au nouveau ticket
+            newTicket.innerHTML = `
+                <label for="first_name[]">Prénom:</label><br>
+                <input type="text" id="first_name" name="first_name[]" value=""><br>
+                <label for="last_name[]">Nom:</label><br>
+                <input type="text" id="last_name" name="last_name[]" value=""><br>
+                <label for="email[]">Email:</label><br>
+                <input type="email" id="email" name="email[]" value=""><br>
+                <label for="type[]">Type:</label><br>
+                <select id="type" name="type[]">
+                    <option value="Gratuit">Gratuit</option>
+                    <option value="Premium">Premium</option>
+                </select><br>
+                <label for="date_start[]">Date de début:</label><br>
+                <input type="date" id="date_start" name="date_start[]" min="2025-01-01" max="2025-12-31"><br>
+                <label for="date_end[]">Date de fin:</label><br>
+                <input type="date" id="date_end" name="date_end[]" min="2025-01-01" max="2025-12-31"><br>
+                <label for="phone[]">Téléphone:</label><br>
+                <input type="tel" id="phone" name="phone[]" pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$" value=""><br>
+                <label for="referral_link[]">Lien de parrainage:</label><br>
+                <input type="text" id="referral_link" name="referral_link[]" value=""><br>
+                <p id="price">Prix : 0 €</p>
+                
+            `;
+            buy.innerHTML = `
+                <input type="submit" value="Acheter">
+            `;
+            // Ajouter le nouveau ticket au conteneur de tickets
+            ticketContainer.appendChild(newTicket);
+        }
+    });
+</script>
 
 <script>
     // Récupérer le paramètre referral_link de l'URL
