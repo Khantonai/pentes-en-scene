@@ -38,9 +38,8 @@
         <input type="submit" value="Acheter">
     </div>
     
-    
     @guest
-        
+        <a href="{{ route('login.redirect', ['from' => route('tickets.create')]) }}">Se créer un compte</a>
     @endguest
 </form>
 <ul>
