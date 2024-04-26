@@ -129,8 +129,8 @@
             Billet 1 jour
         </h2>
         <button>
-            <a href="{{ route('programme.index') }}">
-                Voir le programme
+            <a href="{{ route('tickets.create') }}">
+            Choisir ce billet
             </a>
         </button>
     </div>
@@ -142,8 +142,8 @@ filter_2
             Billet 2 jours
         </h2>
         <button>
-            <a href="{{ route('animations.index') }}">
-                Voir les animations
+            <a href="{{ route('tickets.create', ['type' => '2-free']) }}">
+            Choisir ce billet
             </a>
         </button>
     </div>
@@ -155,8 +155,8 @@ filter_3
         Billet 3 jours
         </h2>
         <button>
-            <a href="">
-                Acheter un billet
+            <a href="{{ route('tickets.create', ['type' => '3-free']) }}">
+            Choisir ce billet
             </a>
         </button>
     </div>
@@ -168,10 +168,68 @@ filter_4
         Full Pass
     </h2>
         <button>
-            <a href="">
-                Acheter un billet
+            <a href="{{ route('tickets.create', ['type' => '4-free']) }}">
+            Choisir ce billet
             </a>
         </button>
     </div>
 </section>
+
+
+<section class="title-section">
+        <h2>Billets Animations + Concerts</h2>
+    </section>
+    <section id="actions" class="flex-row">
+    <div class="flex-col">
+        <span class="material-symbols-outlined">looks_one</span>
+        <h2>
+            Billet 1 jour
+        </h2>
+        <button>
+            <a href="{{ route('tickets.create', ['type' => '1-pay']) }}">
+            Choisir ce billet
+            </a>
+        </button>
+    </div>
+    <div class="flex-col">
+    <span class="material-symbols-outlined">
+filter_2
+</span>
+        <h2>
+            Billet 2 jours
+        </h2>
+        <button>
+            <a href="{{ route('tickets.create', ['type' => '2-pay']) }}">
+            Choisir ce billet
+            </a>
+        </button>
+    </div>
+    <div class="flex-col">
+    <span class="material-symbols-outlined">
+filter_3
+</span>
+        <h2>
+        Billet 3 jours
+        </h2>
+        <button>
+            <a href="{{ route('tickets.create', ['type' => '3-pay']) }}">
+            Choisir ce billet
+            </a>
+        </button>
+    </div>
+    <div class="flex-col">
+    <span class="material-symbols-outlined">
+filter_4
+</span>
+    <h2>
+        Full Pass
+    </h2>
+        <button>
+            <a href="{{ route('tickets.create', ['type' => '4-pay']) }}">
+            Choisir ce billet
+            </a>
+        </button>
+    </div>
+</section>
+
 @endsection
