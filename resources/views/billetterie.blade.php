@@ -39,6 +39,56 @@
             font-size: 1.5rem;
             margin-bottom: 20px;
         }
+
+        #actions {
+        width: 100%;
+        gap: 20px;
+    }
+
+    #actions .flex-col {
+        align-items: center;
+        flex: 1;
+        border-radius: 10px;
+        padding-block: 40px;
+        color: var(--grey);
+    }
+
+    #actions > div:first-child {
+        background-color: var(--blue);
+    }
+    
+    #actions > div:first-child a {
+        color: var(--blue);
+    }
+    
+    #actions > div:nth-child(2) {
+        background-color: var(--purple);
+    }
+    
+    #actions > div:nth-child(2) a {
+        color: var(--purple);
+    }
+
+    #actions > div:nth-child(3) {
+        background-color: var(--red);
+    }
+    
+    #actions > div:nth-child(3) a {
+        color: var(--red);
+    }
+
+    #actions > div:last-child {
+        background-color: var(--black);
+    }
+    
+    #actions > div:last-child a {
+        color: var(--black);
+    }
+
+    #actions h2 {
+        font-size: 1.5rem;
+        margin-block: 20px;
+    }
     </style>
 @endsection
 
@@ -68,4 +118,60 @@
         <a href="{{ route('tickets.create', ['type' => 'single-pay']) }}" class="button">Choisir ce billet</a>
     </div>
    </section>
+
+    <section class="title-section">
+        <h2>Billets Animations</h2>
+    </section>
+    <section id="actions" class="flex-row">
+    <div class="flex-col">
+        <span class="material-symbols-outlined">looks_one</span>
+        <h2>
+            Billet 1 jour
+        </h2>
+        <button>
+            <a href="{{ route('programme.index') }}">
+                Voir le programme
+            </a>
+        </button>
+    </div>
+    <div class="flex-col">
+    <span class="material-symbols-outlined">
+filter_2
+</span>
+        <h2>
+            Billet 2 jours
+        </h2>
+        <button>
+            <a href="{{ route('animations.index') }}">
+                Voir les animations
+            </a>
+        </button>
+    </div>
+    <div class="flex-col">
+    <span class="material-symbols-outlined">
+filter_3
+</span>
+        <h2>
+        Billet 3 jours
+        </h2>
+        <button>
+            <a href="">
+                Acheter un billet
+            </a>
+        </button>
+    </div>
+    <div class="flex-col">
+    <span class="material-symbols-outlined">
+filter_4
+</span>
+    <h2>
+        Full Pass
+    </h2>
+        <button>
+            <a href="">
+                Acheter un billet
+            </a>
+        </button>
+    </div>
+</section>
 @endsection

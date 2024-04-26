@@ -46,6 +46,7 @@
     // Récupérer le paramètre referral_link de l'URL
     const urlParams = new URLSearchParams(window.location.search);
     const referralLink = urlParams.get('referral_link');
+    const type = urlParams.get('type');
 
     // Si referral_link existe, définir comme valeur du champ
     try {
@@ -110,6 +111,11 @@
     dateStartElement.addEventListener('change', handleChange);
     dateEndElement.addEventListener('change', handleChange);
 });
+
+if (type == 'single-pay') {
+    document.getElementById('type').value = 'Premium';
+    // document.getElementById('type').dispatchEvent(new Event('change'));
+}
 
 
 </script>

@@ -267,7 +267,7 @@
             Programme
         </h2>
         <button>
-            <a href="{{ route('programme.index') }}">
+            <a href="">
                 Voir le programme
             </a>
         </button>
@@ -280,7 +280,7 @@ theater_comedy
             Animations
         </h2>
         <button>
-            <a href="{{ route('animations.index') }}">
+            <a href="">
                 Voir les animations
             </a>
         </button>
@@ -290,10 +290,10 @@ theater_comedy
 local_activity
 </span>
         <h2>
-            billetterie
+            Billetterie
         </h2>
         <button>
-            <a href="">
+            <a href="{{ route('billetterie') }}">
                 Acheter un billet
             </a>
         </button>
