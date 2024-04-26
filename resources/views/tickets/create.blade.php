@@ -97,9 +97,9 @@
         var days = (dateEnd - dateStart) / (1000 * 60 * 60 * 24);
         var promo = null;  
         if (referralLink!=null) {
-            console.log("AAHAAh" + referralLink);
+            // console.log("AAHAAh" + referralLink);
             promo = 0.15;
-            console.log(promo);
+            // console.log(promo);
         }
 
         // Définir le prix en fonction du type de billet et du nombre de jours
@@ -110,14 +110,22 @@
         if (type == 'Premium') {
             if (days == 0) {
                 price = 0;
-                console.log(price);
-            }else if (days <=3) {
+                // console.log(price);
+            }else if (days <=1) {
                 price = 50-(50*promo);
-                console.log(promo);
+                // console.log(promo);
             }
-            else if (days <= 7) {
+            else if (days <= 2) {
                 price = 70-(70 * promo);
-                console.log(price);
+                // console.log(price);
+            }
+            else if (days <= 3) {
+                price = 90-(90 * promo);
+                // console.log(price);
+            }
+            else if (days <= 4) {
+                price = 100-(100 * promo);
+                // console.log(price);
             }
             else {
                 price = 80-(80*promo);
