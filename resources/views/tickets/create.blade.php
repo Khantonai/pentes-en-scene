@@ -5,28 +5,28 @@
 
 <form action="{{ route('tickets.store') }}" method="POST" id="ticketForm">
     @csrf
-    <label for="num_tickets">Nombre de tickets:</label><br>
-    <input type="number" id="num_tickets" name="num_tickets" min="1" max="10" value="1"><br>
+    <label for="num_tickets">Nombre de tickets:</label>
+    <input type="number" id="num_tickets" name="num_tickets" min="1" max="10" value="1">
     <div id="ticketContainer">
         <!-- Un ticket -->
         <div class="ticket">
-            <label for="first_name []">Prénom:</label><br>
-            <input type="text" id="first_name" name="first_name[]" value="{{ old('first_name', auth()->user()->first_name ?? '') }}"><br>
-            <label for="last_name []">Nom:</label><br>
-            <input type="text" id="last_name" name="last_name[]" value="{{ old('last_name', auth()->user()->last_name ?? '') }}"><br>
-            <label for="email[]">Email:</label><br>
-            <input type="email" id="email" name="email[]" value="{{ old('email', auth()->user()->email ?? '') }}"><br>
+            <label for="first_name []">Prénom:</label>
+            <input type="text" id="first_name" name="first_name[]" value="{{ old('first_name', auth()->user()->first_name ?? '') }}">
+            <label for="last_name []">Nom:</label>
+            <input type="text" id="last_name" name="last_name[]" value="{{ old('last_name', auth()->user()->last_name ?? '') }}">
+            <label for="email[]">Email:</label>
+            <input type="email" id="email" name="email[]" value="{{ old('email', auth()->user()->email ?? '') }}">
             <label for="type[]">type</label>
                 <select id="type" name="type">
                     <option value="Gratuit"> Gratuit</option>
                     <option value="Premium"> Premium</option>
                 </select>
-            <label for="date_start[]">Date de début:</label><br>
-            <input type="date" id="date_start" name="date_start[]" min="2025-01-01" max="2025-12-31"><br>
-            <label for="date_end[]">Date de fin:</label><br>
-            <input type="date" id="date_end" name="date_end[]"min="2025-01-01" max="2025-12-31"><br>
-            <label for="phone[]">Téléphone:</label><br>
-            <input type="tel" id="phone" name="phone[]" pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$" value="{{ old('phone', auth()->user()->phone ?? '') }}"><br>
+            <label for="date_start[]">Date de début:</label>
+            <input type="date" id="date_start" name="date_start[]" min="2025-01-01" max="2025-12-31">
+            <label for="date_end[]">Date de fin:</label>
+            <input type="date" id="date_end" name="date_end[]"min="2025-01-01" max="2025-12-31">
+            <label for="phone[]">Téléphone:</label>
+            <input type="tel" id="phone" name="phone[]" pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$" value="{{ old('phone', auth()->user()->phone ?? '') }}">
             @auth
                 <label for="referral_link[]">Affiliation : </label>
                 <input type="text" id="referral_link" name="referral_link[]">
