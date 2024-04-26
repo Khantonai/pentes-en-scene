@@ -22,7 +22,24 @@
         
 
         <!-- Styles -->
-        @yield('styles')
+        <style>
+            form {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+            }
+
+            form > div {
+                display: flex;
+                flex-direction: column;
+            }
+
+            h1 {
+
+            }
+        </style>
     </head>
     <body class="font-sans antialiased">
         <!-- Page Heading -->

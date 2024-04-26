@@ -8,6 +8,7 @@
 
     <form method="POST" action="{{ route('login') }}">
         @csrf
+        <h1>Se connecter</h1>
 
         <!-- Email Address -->
         <div>
