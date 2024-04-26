@@ -173,12 +173,44 @@
     typeElement.addEventListener('change', handleChange);
     dateStartElement.addEventListener('change', handleChange);
     dateEndElement.addEventListener('change', handleChange);
+
+
+    if (type == '2-free') {
+    document.getElementById('date_start').value = '2025-07-03';
+    document.getElementById('date_end').value = '2025-07-04';
+}
+else if (type == '3-free') {
+    document.getElementById('date_start').value = '2025-07-03';
+    document.getElementById('date_end').value = '2025-07-05';
+}
+else if (type == '3-free') {
+    document.getElementById('date_start').value = '2025-07-03';
+    document.getElementById('date_end').value = '2025-07-06';
+}
+else if (type == '1-pay') {
+    document.getElementById('type').value = 'Premium';
+}
+else if (type == '2-pay') {
+    document.getElementById('type').value = 'Premium';
+    document.getElementById('date_start').value = '2025-07-03';
+    document.getElementById('date_end').value = '2025-07-04';
+}
+else if (type == '3-pay') {
+    document.getElementById('type').value = 'Premium';
+    document.getElementById('date_start').value = '2025-07-03';
+    document.getElementById('date_end').value = '2025-07-05';
+}
+else if (type == '4-pay') {
+    document.getElementById('type').value = 'Premium';
+    document.getElementById('date_start').value = '2025-07-03';
+    document.getElementById('date_end').value = '2025-07-06';
+}
+
+handleChange();
 });
 
-if (type == 'single-pay') {
-    document.getElementById('type').value = 'Premium';
-    // document.getElementById('type').dispatchEvent(new Event('change'));
-}
+
+
 
 
 </script>
