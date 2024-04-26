@@ -22,6 +22,31 @@
         
 
         <!-- Styles -->
+        <style>
+            main {
+                min-height: calc(100vh - 40px);
+            }
+            main form {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+                gap : 20px;
+            }
+
+            main form > div {
+                display: flex;
+                flex-direction: column;
+            }
+
+            h1 {
+                font-size: 3rem;
+                font-weight: 700;
+                margin-bottom: 1rem;
+                color: var(--black);
+            }
+        </style>
         @yield('styles')
     </head>
     <body class="font-sans antialiased">

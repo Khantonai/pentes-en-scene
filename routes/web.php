@@ -12,14 +12,16 @@ Route::get('/', function () {
 
 Route::get('/dashboard', [TicketsController::class,'index'])->middleware(['auth', 'verified'])->name('dashboard');
 Route::get('/register/redirect', [RegisteredUserController::class, 'redirect'])->name('login.redirect');
-Route::get('/billeterie', [TicketsController::class,'index'])->name('tickets.index');
-Route::get('/billeterie/acheter', [TicketsController::class,'create'])->name('tickets.create');
-Route::post('/billeterie', [TicketsController::class,'store'])->name('tickets.store');
-Route::get('/billeterie/{ticket}', [TicketsController::class,'show'])->name('tickets.show');
-Route::get('billeterie/{ticket}/edit', [TicketsController::class,'edit'])->name('tickets.edit');
-Route::put('billeterie/{ticket}', [TicketsController::class,'update'])->name('tickets.update');
+Route::get('/billetterie', function () {
+    return view('billetterie');
+})->name('billetterie');
+Route::get('/billetterie/acheter', [TicketsController::class,'create'])->name('tickets.create');
+Route::post('/billetterie', [TicketsController::class,'store'])->name('tickets.store');
+Route::get('/billetterie/{ticket}', [TicketsController::class,'show'])->name('tickets.show');
+Route::get('billetterie/{ticket}/edit', [TicketsController::class,'edit'])->name('tickets.edit');
+Route::put('billetterie/{ticket}', [TicketsController::class,'update'])->name('tickets.update');
 Route::get('qr-code/{token}', [TicketsController::class,'scanQrCode'])->name('tickets.scan');
-Route::delete('billeterie/{ticket}', [TicketsController::class,'destroy'])->name('tickets.destroy');
+Route::delete('billetterie/{ticket}', [TicketsController::class,'destroy'])->name('tickets.destroy');
 Route::get('/tickets/{token}/pdf', [TicketsController::class, 'showPDF'])->name('tickets.pdf');
 
 

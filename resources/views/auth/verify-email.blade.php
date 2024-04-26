@@ -1,5 +1,18 @@
 @extends('layouts.user')
 
+@section('styles')
+<style>
+    #header {
+        position: fixed;
+        width: calc(100% - 40px);
+    }
+
+    main {
+        padding: 0;
+    }
+</style>
+@endsection
+
 @section('content')
 <x-guest-layout>
     <div class="mb-4 text-sm text-gray-600 dark:text-gray-400">

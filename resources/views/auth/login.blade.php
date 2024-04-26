@@ -1,5 +1,18 @@
 @extends('layouts.user')
 
+@section('styles')
+<style>
+    #header {
+        position: fixed;
+        width: calc(100% - 40px);
+    }
+
+    main {
+        padding: 0;
+    }
+</style>
+@endsection
+
 @section('content')
 
 <x-guest-layout>
@@ -8,6 +21,7 @@
 
     <form method="POST" action="{{ route('login') }}">
         @csrf
+        <h1>Se connecter</h1>
 
         <!-- Email Address -->
         <div>
