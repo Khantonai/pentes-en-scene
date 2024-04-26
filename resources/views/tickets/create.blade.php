@@ -52,6 +52,30 @@
     @endif
 </ul>
 
+<style>
+    input, select {
+        display:flex;
+        width: 100%;
+        padding: 5px;
+        justify-content: center;
+
+    }
+    label{
+        display:flex;
+        justify-content: center;
+    }
+    .ticket {
+        margin: 10px 0;
+        padding: 10px;
+        border: 1px solid #ccc;
+        width: 300px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+</style>
+
 <script>
     document.getElementById('num_tickets').addEventListener('change', function() {
         // Obtenir le nombre de tickets
