@@ -32,6 +32,7 @@ class TicketsController extends Controller
             return view('dashboard', ['tickets' => $tickets]);
          }else{
             return view('tickets.index', ['tickets' => $tickets]);}
+
      }
 
     
@@ -80,6 +81,7 @@ class TicketsController extends Controller
         $ticket->token = uniqid();
         
         $url = route('tickets.scan', ['token' => $ticket->token]);
+        // $url = 'http://192.168.1.50:8000/qr-code/' . $ticket->token;
 
         // $qrCode = new QrCode($ticket->token);
         $qrCode = new QrCode($url);

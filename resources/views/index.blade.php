@@ -255,7 +255,7 @@
         <p>
             Le festival culturel de l'été à Croix-Rousse
         </p>
-        <img src="storage/img/logo-blanc.png" alt="" height="200">
+        <!-- <img src="storage/img/logo-blanc.png" alt="" height="200"> -->
     </div>
 @endsection
 
@@ -290,7 +290,7 @@ theater_comedy
 local_activity
 </span>
         <h2>
-            Billeterie
+            billetterie
         </h2>
         <button>
             <a href="">
@@ -320,7 +320,7 @@ local_activity
                 Depuis sa création en 2005, Pente en Scène est devenu un événement incontournable de l'été à Lyon. Chaque année, des milliers de spectateurs se pressent dans les rues de Croix-Rousse pour assister aux concerts, aux spectacles de rue, aux animations et aux expositions proposés par le festival. Les artistes locaux et internationaux se succèdent sur les différentes scènes du festival pour offrir au public des moments inoubliables et des découvertes musicales et artistiques uniques. Venez vivre l'expérience Pente en Scène et laissez-vous emporter par la magie du festival !
             </p>
         </div>
-        <img src="https://www.tourmag.com/photo/art/grande/66000069-46986944.jpg?v=1657621760" alt="">
+        <img src="storage/img/ville-lyon.webp" alt="">
     </div>
     <div>
         <div>
@@ -405,7 +405,6 @@ local_activity
         </section>
 
         <script>
-            console.log($);
             $(document).ready(function() {
     var $slides = $('.slider .slide-track').children().clone();
     $('.slider .slide-track').append($slides);
