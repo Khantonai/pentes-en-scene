@@ -10,9 +10,8 @@ Route::get('/', function () {
     return view('/index');
 })->name('index');
 
-
 Route::get('/dashboard', [TicketsController::class,'index'])->middleware(['auth', 'verified'])->name('dashboard');
-Route::get('/register/redirect', [RegisteredUserController::class, 'redirect'])->name('register.redirect');
+Route::get('/register/redirect', [RegisteredUserController::class, 'redirect'])->name('login.redirect');
 Route::get('/billeterie', [TicketsController::class,'index'])->name('tickets.index');
 Route::get('/billeterie/acheter', [TicketsController::class,'create'])->name('tickets.create');
 Route::post('/billeterie', [TicketsController::class,'store'])->name('tickets.store');
