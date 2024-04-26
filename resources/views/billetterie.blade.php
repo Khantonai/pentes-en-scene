@@ -108,14 +108,12 @@
         <p>
             Le billet "Animations" vous donne accès à toutes les animations de la journée gratuitement !
         </p>
-        <a href="{{ route('tickets.create') }}" class="button">Choisir ce billet</a>
     </div>
     <div>
         <h2>Billet Animations + Concerts</h2>
         <p>
             Le billet "Animations + Concerts" vous donne accès à toutes les animations de la journée et à la fosse des concerts en plus d'une boisson offerte !        
         </p>
-        <a href="{{ route('tickets.create', ['type' => 'single-pay']) }}" class="button">Choisir ce billet</a>
     </div>
    </section>
 
