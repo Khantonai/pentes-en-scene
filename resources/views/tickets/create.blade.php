@@ -47,15 +47,18 @@
         <input type="tel" id="phone" name="phone" pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$" value="{{ old('phone', auth()->user()->phone ?? '') }}">
     </div>
     <div class="bb">
+        @guest
+        <p>Vous devez créer un compte ou vous connecter pour bénéficier de l'affiliation</p>
+        @endguest
         @auth
             <label for="referral_link">Affiliation : </label>
-            <input type="text" id="referral_link" name="referral_link">
+            <input type="text" id="referral_link" name="referral_link" value="{{ old('referral_link') }}>
         @endauth
     </div>
     <p id="price">Prix : 0 €</p>
-    <input type="submit" value="Acheter">
+    <button type="submit" style="font-size: 24px;">Acheter</button>
     @guest
-        <a href="{{ route('login.redirect', ['from' => route('tickets.create')]) }}">Se connecter</a>
+        <a href="{{ route('login.redirect', ['from' => route('tickets.create')]) }}" class="button">Créer un compte</a>
     @endguest
 </form>
 <ul>

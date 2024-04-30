@@ -106,7 +106,7 @@
         <div id="parrainage" class="tabcontent">
             <h2>Mon lien de parrainage</h2>
             @if($tickets->count() > 0)
-                <div id="link">{{ url('/billetterie/create?referral_link=' . auth()->user()->referral->link) }}</div>
+                <div id="link">{{ url('/billetterie/acheter?referral_link=' . auth()->user()->referral->link) }}</div>
                 <button onclick="copyReferralLink()">Copier le lien de parrainage</button>
             @else
                 <p>Achetez un billet pour obtenir un lien de parrainage.</p>
