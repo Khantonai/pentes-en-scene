@@ -52,7 +52,7 @@
         @endguest
         @auth
             <label for="referral_link">Affiliation : </label>
-            <input type="text" id="referral_link" name="referral_link" value="{{ old('referral_link') }}>
+            <input type="text" id="referral_link" name="referral_link" value="{{ old('referral_link') }}">
         @endauth
     </div>
     <p id="price">Prix : 0 €</p>
